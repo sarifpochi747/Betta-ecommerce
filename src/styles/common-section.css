@@ -1,0 +1,14 @@
+
+
+
+.common__section{
+    background: linear-gradient(#0000,#000),url("../assets/images/arm-chair-03.jpg") no-repeat;
+    background-size: contain;
+
+}
+
+
+.common__section h1{
+    color: white;
+    font-weight: 600;
+}
