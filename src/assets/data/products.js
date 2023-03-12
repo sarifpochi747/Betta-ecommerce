@@ -47,7 +47,6 @@ const products = [
     ],
     avgRating: 4.5,
   },
-
   {
     id: "02",
     productName: "Rivet Bigelow Modern ",
@@ -572,5 +571,4 @@ const products = [
     avgRating: 4.8,
   },
 ];
-
 export default products;

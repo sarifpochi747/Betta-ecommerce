@@ -12,9 +12,9 @@ const Shop =()=>{
 
     const handlerFilter = (event)=>{
         const filtertValue = event.target.value;
-        if (filtertValue === "sofa")
+        if (filtertValue === "Betta splendens")
         {
-            const filterProducts = products.filter(item =>item.category === "sofa")
+            const filterProducts = products.filter(item =>item.category === "Betta splendens")
             setProductsData(filterProducts)
         }
         if (filtertValue === "mobile")
@@ -45,7 +45,7 @@ const Shop =()=>{
                             <div className="filter__widget">
                                 <select onClick={handlerFilter}>
                                     <option>Filter By Category</option>
-                                    <option value = "sofa">Sofa</option>
+                                    <option value = "Betta splendens">Betta splendens</option>
                                     <option value = "mobile">Mobile</option>
                                     <option value = "chair">Chair</option>
                                     <option value = "wireless">Wireless</option>

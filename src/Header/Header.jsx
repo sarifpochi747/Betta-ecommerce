@@ -95,9 +95,9 @@ const  Header=()=>{
                                             <span onClick={logout}>Logout</span>
                                         ):(
                                             <div className="d-flex align-items-center justify-content-center flex-column">
-                                                <Link to="/signup">Signup</Link>
-                                                <Link to="/login">Login</Link>
-                                            </div>
+                                                <NavLink to={"/dashboard"} >Dashboard</NavLink>                                            
+                                                <NavLink to={"/signup"} >Signup </NavLink>                                            
+                                                <NavLink to={"/login"} >Login</NavLink>                                            </div>
                                         )
                                     }
                                 </div>
