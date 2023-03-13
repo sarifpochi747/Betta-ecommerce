@@ -1,5 +1,7 @@
 
-
+.product_info span{
+    display: block;
+}
 .product_info h3{
 
     font-size: 1.2rem;

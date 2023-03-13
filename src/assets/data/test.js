@@ -2,6 +2,7 @@ const products1 = [
     {
     id:"01",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta splendens",
     size:1.3,
@@ -13,6 +14,7 @@ const products1 = [
     {
     id:"02",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta splendens",
     size:1.3,
@@ -24,6 +26,7 @@ const products1 = [
     {
     id:"03",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta albimarginata",
     size:1.3,
@@ -35,6 +38,7 @@ const products1 = [
     {
     id:"04",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta albimarginata",
     size:1.3,
@@ -46,6 +50,7 @@ const products1 = [
     {
     id:"05",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta splendens",
     size:1.3,
@@ -57,6 +62,7 @@ const products1 = [
     {
     id:"06",
     gender : "Male",
+    productName: category + id,
     imgUrl:"https://readthecloud.co/wp-content/uploads/2021/11/siamese-fighting-fish-betta-splendens-35.jpg",
     category:"Betta splendens",
     size:1.3,
