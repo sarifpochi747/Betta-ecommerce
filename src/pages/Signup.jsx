@@ -3,18 +3,17 @@ import "../styles/login.css"
 import { useState } from "react";
 import Helmet from "../Helmet/helmet";
 import { Container,Row,Col,Form,FormGroup } from "reactstrap";
-import { motion } from "framer-motion";
-import { Link, Navigate } from "react-router-dom";
 import { createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { ref,uploadBytesResumable,getDownloadURL} from "firebase/storage";
-import { NavLink,useNavigate } from "react-router-dom";
-
+import { Link,useNavigate } from "react-router-dom";
 
 import {setDoc,doc} from "firebase/firestore"
 import { auth } from "../firebase.config";
 import { storage } from "../firebase.config";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
+
+
 
 const Signup =()=>{
     const [username,setUsername] = useState("");
@@ -29,6 +28,7 @@ const Signup =()=>{
     const signup = async(e)=>{
         e.preventDefault();
         setLoading(true);
+
         try {
             const userCreadentail = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCreadentail.user;
@@ -84,7 +84,7 @@ const Signup =()=>{
                         {
                             loading?(
                                 <Col lg='12' className="text-center">
-                                    <h5 className="fw-bold">Loading....</h5>
+                                    <h1 className="fw-bold py-5 text-center">Loading....</h1>
                                 </Col>
                             ):(
                                 <Col lg='6' className="m-auto text-center">
@@ -96,26 +96,33 @@ const Signup =()=>{
                                             type="email" 
                                             placeholder="Enter your email" 
                                             value={email} 
-                                            onChange={e=>setEmail(e.target.value)} />
+                                            onChange={e=>setEmail(e.target.value)} 
+                                            required
+                                            />
                                     </FormGroup>
                                     <FormGroup className="form__group">
                                         <input 
                                             type="text" 
                                             placeholder="Enter your Username" 
                                             value={username} 
-                                            onChange={e=>setUsername(e.target.value)} />
+                                            onChange={e=>setUsername(e.target.value)}
+                                            required />
                                     </FormGroup>
                                     <FormGroup className="form__group">
                                         <input 
                                             type="password" 
                                             placeholder="Enter your password" 
                                             value={password} 
-                                            onChange={e=>setPassword(e.target.value)} />
+                                            onChange={e=>setPassword(e.target.value)} 
+                                            required
+                                            />
                                     </FormGroup>
                                     <FormGroup className="form__group">
                                         <input 
                                             type="file" 
-                                            onChange={e=>setFile(e.target.files[0])} />
+                                            onChange={e=>setFile(e.target.files[0])}
+                                            required
+                                             />
                                     </FormGroup>
                                     <button className="buy_btn login" type="submit">Create an account</button>
                                     <p>Already have an account?{" "}<Link to={"/login"}>Login</Link></p>

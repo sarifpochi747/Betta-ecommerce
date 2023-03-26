@@ -49,16 +49,6 @@ const Home =()=>{
                     </Container>
                 </section>
                 <Service/>
-                <section className="trending_products">
-                    <Container>
-                        <Row>
-                            <Col lg='12'>
-                                <h2 className="section_title">Trending Products</h2>
-                            </Col>
-                            <ProductList data={data}/>
-                        </Row>
-                    </Container>
-                </section>
 
 
             </Helmet>
