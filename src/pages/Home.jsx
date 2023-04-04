@@ -3,7 +3,7 @@ import { useState } from "react";
 import Helmet from "../Helmet/helmet";
 import '../styles/home.css';
 import ProductList from "../UI/productList";
-import imghero from "../assets/images/hero-img.png";
+import imghero from "../assets/images/fishhome.png";
 import Service from "../service/service";
 import products from "../assets/data/products";
 
@@ -31,13 +31,12 @@ const Home =()=>{
                         <Row>
                             <Col lg = '6' md = '6'>
                                 <div className="hero_content">
-                                    <p className="hero_subtitle">Trending product in 2025</p>
-                                    <h2>Make Your Fuck</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quia itaque eveniet 
-                                        velit architecto delectus incidunt unde ullam temporibus, nulla, ut aspernatur reiciendis, 
-                                        eos adipisci voluptatibus dolore fuga tenetur molestias quasi quo fugiat. Eum earum 
-                                        dolorum quibusdam tenetur quasi sint minus ipsa aperiam reiciendis! Ea 
-                                        officiis dolor harum voluptate rerum!</p>
+                                    <p className="hero_subtitle">SHOP FOR BETTA NOW</p>
+                                    <h2>BETTA ECOMMERCE</h2>
+                                    <p>Betta Fishes are also called living Fengshui, 
+                                        we are delivering top quality grade betta from Thailand, Usual delivery will take 2-7 days 
+                                        depending upon the distance of travel. We are delivering 100% genuine items which are ordered by you.
+                                        100% live guarantee, 100% satisfaction on our products.</p>
                                         <motion.button    whileHover={{scale: 1.2}}
                                         className="buy_btn"><Link to={"/shop"}>SHOP NOW</Link></motion.button>
                                 </div>
