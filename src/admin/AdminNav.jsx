@@ -10,6 +10,10 @@ const admin__nav = [
     path:"/dashboard"
   },
   {
+    display:"AddProducts",
+    path:"/dashboard/add-products"
+  },
+  {
     display:"AllProducts",
     path:"/dashboard/all-products"
   },
@@ -53,7 +57,7 @@ export default function AdminNav() {
               <div className="admin__nav-top-right">
                 <span><i className="ri-notification-3-line"></i></span>
                 <span><i className="ri-settings-2-line"></i></span>
-                <img src={userrIcon}/>
+                <img src={currentUser &&currentUser.photoURL}/>
               </div>
 
               

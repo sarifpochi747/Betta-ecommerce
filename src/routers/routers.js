@@ -12,6 +12,8 @@ import AdminNav from '../admin/AdminNav';
 import AddProducts from '../admin/AddProducts';
 import AllProducts from '../admin/AllProducts';
 import Dashboard from '../admin/Dashboard';
+import Users from '../admin/Users';
+
 const Routers = ()=>{
     return(
 
@@ -27,6 +29,7 @@ const Routers = ()=>{
                 <Route path={"checkout"} element={<Checkout/>}/>
                 <Route path={"dashboard/all-products"} element={<AllProducts/>}/>
                 <Route path={"dashboard/add-products"}element={<AddProducts/>}/>
+                <Route path={"dashboard/users"}element={<Users/>}/>
             </Route>
             <Route path={"/cart"} element={<Cart/>}/>
             <Route path={"/login"} element={<Login/>}/>

@@ -15,7 +15,7 @@ import { auth } from "../firebase.config";
 
 
 const  Header=()=>{
-
+    
     const headerRef = useRef(null)
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
     const navigate = useNavigate();
