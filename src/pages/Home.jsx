@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Helmet from "../Helmet/helmet";
 import '../styles/home.css';
-import imghero from "../assets/images/hero-img.png";
+import imghero from "../assets/images/fishhome.png";
 import Service from "../service/service";
 import products from "../assets/data/products";
 import ProductList from "../UI/productList";
