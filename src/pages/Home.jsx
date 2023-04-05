@@ -2,21 +2,20 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Helmet from "../Helmet/helmet";
 import '../styles/home.css';
-import ProductList from "../UI/productList";
 import imghero from "../assets/images/hero-img.png";
 import Service from "../service/service";
 import products from "../assets/data/products";
+import ProductList from "../UI/productList";
 
 
 import { Container,Row,Col } from "reactstrap";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import serviceData from "../assets/data/serviceData";
 const Home =()=>{
     const [data,setData] = useState(products);
 
     useEffect(()=>{
-        const filteredProducts = products.filter(item=>item.category === "chair")
+        const filteredProducts = products.filter(item=>item.category === "Betta splendens")
         setData(filteredProducts);
     },[]);
 
@@ -49,6 +48,16 @@ const Home =()=>{
                     </Container>
                 </section>
                 <Service/>
+                <section>
+                    <Container>
+                        <Row>
+                        {
+                            data.length === 0? <h1>No products are found!</h1>:
+                            <ProductList data = {data}/>
+                        }
+                        </Row>
+                    </Container>
+                 </section>
 
 
             </Helmet>

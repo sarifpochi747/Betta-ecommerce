@@ -17,16 +17,6 @@ const Shop =()=>{
             const filterProducts = products.filter(item =>item.category === "Betta splendens")
             setProductsData(filterProducts)
         }
-        if (filtertValue === "mobile")
-        {
-            const filterProducts = products.filter(item =>item.category === "mobile")
-            setProductsData(filterProducts)
-        }
-        if (filtertValue === "chair")
-        {
-            const filterProducts = products.filter(item =>item.category === "chair")
-            setProductsData(filterProducts)
-        }
     }
 
 
@@ -46,9 +36,6 @@ const Shop =()=>{
                                 <select onClick={handlerFilter}>
                                     <option>Filter By Category</option>
                                     <option value = "Betta splendens">Betta splendens</option>
-                                    <option value = "mobile">Mobile</option>
-                                    <option value = "chair">Chair</option>
-                                    <option value = "wireless">Wireless</option>
                                 </select>
                             </div>
                         </Col>

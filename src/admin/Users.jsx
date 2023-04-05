@@ -24,7 +24,7 @@ export default function Users() {
                 <Col lg='12'>
                     <h4 className="fw-bold">Users</h4>
                 </Col>
-                <Col lg='12' className='pt-5 '>
+                <Col  className='lg-12 pt-5 '>
                     <tabel className="table">
                         <thead>
                             <tr>

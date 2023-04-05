@@ -1,7 +1,15 @@
 import React from 'react'
-
+import { Container,Row } from 'reactstrap'
 export default function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <section>
+        <Container>
+          <Row>
+            
+          </Row>
+        </Container>
+      </section>
+    </>
   )
 }
