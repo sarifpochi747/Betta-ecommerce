@@ -41,7 +41,7 @@ const Checkout =()=>{
                 country:country,
                 price:totalAmout,
                 quality:totalQuantity,
-                product:{cartItems}
+                cartItems
             })
             toast.success("product successfully order added");
             setLoading(false)
