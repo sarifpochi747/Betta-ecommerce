@@ -4,6 +4,7 @@ import useGetData from '../custom-hooks/useGetData';
 import { db } from '../firebase.config';
 import { doc,deleteDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import userrIcon from "../assets/images/user-icon.png"
 
 
 
@@ -41,7 +42,7 @@ export default function Users() {
                           (
                             usersData?.map((user) =>(
                                 <tr key={user.uid}>
-                                    <td><img src={user.photoURL} alt=""/></td>
+                                    <td><img src={userrIcon} alt=""/></td>
                                     <td>{user.displayName}</td>
                                     <td>{user.email}</td>
                                     <td>

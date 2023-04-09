@@ -32,32 +32,13 @@ const Signup =()=>{
         try {
             const userCreadentail = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCreadentail.user;
-
-            const storageRef = ref(storage,`image/${Date.now() + username}`);
-            const uploadTask = uploadBytesResumable(storageRef,file);
-            uploadTask.on((error)=> {
-                toast.error(error.message)
-            },
-            ()=>{
-                getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL)=>{
-
-                    //update user profile
-                    await updateProfile(user,{
-                        displayName:username,
-                        photoURL:downloadURL,
-                    });
-                    
-                    // store user data in firestore database
-                    await setDoc(doc(db,"users",user.uid),{
-                        uid:user.uid,
-                        displayName:username,
-                        email,
-                        photoURL:downloadURL,
-
-                    });
-                });
+            
+            const docAdd = await setDoc(doc(db,"users",user.uid),{
+                uid:user.uid,
+                displayName:username,
+                email,
             });
-
+            
             setLoading(false);
             toast.success("Account created");
             navigate("/login");
@@ -116,13 +97,6 @@ const Signup =()=>{
                                             onChange={e=>setPassword(e.target.value)} 
                                             required
                                             />
-                                    </FormGroup>
-                                    <FormGroup className="form__group">
-                                        <input 
-                                            type="file" 
-                                            onChange={e=>setFile(e.target.files[0])}
-                                            required
-                                             />
                                     </FormGroup>
                                     <button className="buy_btn login" type="submit">Create an account</button>
                                     <p>Already have an account?{" "}<Link to={"/login"}>Login</Link></p>

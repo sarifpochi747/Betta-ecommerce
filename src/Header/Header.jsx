@@ -97,7 +97,8 @@ const  Header=()=>{
                                             <div className="d-flex align-items-center justify-content-center flex-column">
                                                 <NavLink to={"/dashboard"} >Dashboard</NavLink>                                            
                                                 <NavLink to={"/signup"} >Signup </NavLink>                                            
-                                                <NavLink to={"/login"} >Login</NavLink>                                            </div>
+                                                <NavLink to={"/login"} >Login</NavLink>                                            
+                                            </div>
                                         )
                                     }
                                 </div>
