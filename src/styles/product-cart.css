@@ -18,6 +18,7 @@
     color: inherit;
 }
 .product_item{
+    
     cursor: pointer;
 }
 
@@ -35,6 +36,3 @@
     border-radius: 50px;
 }
 
-.product_item{
-    cursor: pointer;
-}

@@ -5,54 +5,65 @@ import React ,{useState,useRef}from "react";
 import { Col, Container, Row } from "reactstrap";
 import Helmet from "../Helmet/helmet";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import ProductList from "../UI/productList";
 import { useDispatch } from 'react-redux';
 import { cartAction } from '../redux/slices/cartSlice';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
+import useGetData from "../custom-hooks/useGetData";
 
 const ProductDetails =()=>{
+    const {data:productsData,loading} = useGetData("product");
     const dispatch = useDispatch();
     const {id} = useParams()
-    const product = products.find(item =>item.id === id )
-    
-    const {imgUrl, productName,price ,colour,date,size,gender,category} = product;
-    const relatedProducts = products.filter(item=> item.category === category)
+    const fectData = productsData.filter(item=> item.id == id)
+    //const {imgUrl, productName,price ,colour,date,size,gender,category} = fectData[0];
+    //const relatedPcoroducts = fectData.filter(item=> item.category === category)
     const addTocart = ()=>{
         dispatch(cartAction.addItem({
-          id,
-          image:imgUrl,
-          productName,
-          category,
-          colour,
-          size,
-          date,
-          gender,
-          price
+            id:fectData[0].id,
+            productName:fectData[0].productName,
+            price:fectData[0].price,
+            imgUrl:fectData[0].imgUrl,
+            size:fectData[0].size,
+            gender:fectData[0].gender,
+            date:fectData[0].date,
+            colour:fectData[0].colour
           })
         );
     
         toast.success("product added to the cart");
-      }
+    }
 
     return(
-        <Helmet title={productName}>
+        <Helmet >
             <section  className="pt-0">
                 <Container>
                     <Row>
                         <Col lg='6' >
                             <div className="product_img">
-                                <img src={imgUrl}/>
+                               {
+                                fectData.map((item)=>(
+                                    <img src={item.imgUrl}/> 
+
+                                ))
+                               }
                             </div>
                         </Col>
                         <Col lg='6' >
                             <div className="product__details">
-                                <h2>{productName}</h2>
-                                <span >Species : {category}</span>
-                                <span >Gender : {gender}</span>
-                                <span >Size: 1.4 cm</span>
-                                <span >colour : red</span>
-                                <span className="product__price mt-3">${price}</span>
+                                {
+                                    fectData.map((item)=>(
+                                        <>
+                                            <h2>{item.productName}</h2>
+                                            <span >Species : {item.category}</span>
+                                            <span >Gender : {item.gender}</span>
+                                            <span >Size:{item.size} cm</span>
+                                            <span >colour : {item.colour}</span>
+                                            <span className="product__price mt-3">${item.price}</span>
+                                        </>
+
+                                    ))
+                                }
                                 <p className="mt-3 product__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt autem vero laudantium nobis assumenda quidem voluptates nulla nesciunt nostrum harum voluptate, molestias aliquid in necessitatibus ex! Provident quam ipsum eos?</p>
                                 <motion.button    whileHover={{scale: 1.2}} className="buy_btn"  onClick={addTocart}>Add to Cart</motion.button>
                             </div>
@@ -60,7 +71,6 @@ const ProductDetails =()=>{
                         <Col lg='12' className="mt-5">
                             <h2 className="related__title">You might also like</h2>
                         </Col>
-                        <ProductList data = {relatedProducts}/>
                     </Row>
                 </Container>
             </section>

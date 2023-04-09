@@ -18,6 +18,10 @@ export default function ProductCart({item}) {
       productName:item.productName,
       price:item.price,
       imgUrl:item.imgUrl,
+      size:item.size,
+      gender:item.gender,
+      date:item.date,
+      colour:item.colour
       })
     );
 

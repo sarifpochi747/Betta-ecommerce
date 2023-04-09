@@ -1,30 +1,59 @@
-import React ,{useState}from "react";
+import React ,{useEffect, useState}from "react";
 import { Col, Container, Row } from "reactstrap";
 import Helmet from "../Helmet/helmet";
-import CommonSection from "../UI/commonSection";
 import "../styles/shop.css";
 import ProductList from "../UI/productList";
-import products from "../assets/data/products";
+import {  collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.config";
+import useGetData from "../custom-hooks/useGetData";
 
 const Shop =()=>{
-    const [productsData,setProductsData] = useState(products);
-
+    const {data:product,loading} = useGetData("product");
+    const [productsData,setProductsData] = useState([]);
 
     const handlerFilter = (event)=>{
         const filtertValue = event.target.value;
         if (filtertValue === "Betta splendens")
         {
-            const filterProducts = products.filter(item =>item.category === "Betta splendens")
+            const filterProducts = product.filter(item =>item.category === "Betta splendens")
             setProductsData(filterProducts)
+        }
+        if (filtertValue === "Betta coccina")
+        {
+            const filterProducts = product.filter(item =>item.category === "Betta coccina")
+            setProductsData(filterProducts)
+        }
+        if (filtertValue === "Betta albimarginata")
+        {
+            const filterProducts = product.filter(item =>item.category === "Betta albimarginata")
+            setProductsData(filterProducts)
+        }
+        if(filtertValue === "all")
+        {
+            setProductsData(product)
         }
     }
 
 
     const handlerSearch = (event)=>{
         const searchTearm = event.target.value;
-        const searchProducts = products.filter(item =>item.productName.toLowerCase().includes(searchTearm.toLowerCase()))
+        const searchProducts = product.filter(item =>item.productName.toLowerCase().includes(searchTearm.toLowerCase()))
         setProductsData(searchProducts)
     }
+    
+
+    const fectData = async ()=>{
+        await getDocs (collection(db,"product"))
+        .then((querySnapshot)=>
+        {
+            const data  = querySnapshot.docs.map((doc) =>({...doc.data(),id:doc.id}))
+            setProductsData(data)
+            console.log(productsData,data);
+        })
+    }
+    useEffect(()=>{
+        fectData();
+    },[]);
 
     return(
         <Helmet title = {"SHOP"}>
@@ -34,8 +63,10 @@ const Shop =()=>{
                         <Col lg='3' md ='3'>
                             <div className="filter__widget">
                                 <select onClick={handlerFilter}>
-                                    <option>Filter By Category</option>
-                                    <option value = "Betta splendens">Betta splendens</option>
+                                    <option value={"all"}>Filter by Category (All)</option>
+                                    <option value="Betta splendens">Betta splendens</option>
+                                    <option value="Betta coccina">Betta coccina</option>
+                                    <option value="Betta albimarginata">Betta albimarginata</option>
                                 </select>
                             </div>
                         </Col>

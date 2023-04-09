@@ -6,18 +6,33 @@ import imghero from "../assets/images/fishhome.png";
 import Service from "../service/service";
 import products from "../assets/data/products";
 import ProductList from "../UI/productList";
-
-
 import { Container,Row,Col } from "reactstrap";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-const Home =()=>{
-    const [data,setData] = useState(products);
+import {  collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.config";
 
+const Home =()=>{
+    
+    const [data,setData] = useState([]);
+
+    const fectData = async ()=>{
+        await getDocs (collection(db,"product"))
+        .then((querySnapshot)=>
+        {
+            const data1  = querySnapshot.docs.map((doc) =>({...doc.data(),id:doc.id}))
+            setData(data1)
+            console.log(data,data1);
+        })
+        
+        const filterProducts = data.filter(item =>item.category === "Betta splendens")
+        setData(filterProducts)
+    }
     useEffect(()=>{
-        const filteredProducts = products.filter(item=>item.category === "Betta splendens")
-        setData(filteredProducts);
+        fectData();
     },[]);
+
+
 
 
 
@@ -50,6 +65,9 @@ const Home =()=>{
                 <section>
                     <Container>
                         <Row>
+                        <Col lg='12' className="mt-5">
+                            <h1 className="related__title">Trending Product</h1>
+                        </Col>
                         {
                             data.length === 0? <h1>No products are found!</h1>:
                             <ProductList data = {data}/>

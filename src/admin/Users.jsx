@@ -4,7 +4,6 @@ import useGetData from '../custom-hooks/useGetData';
 import { db } from '../firebase.config';
 import { doc,deleteDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import userrIcon from "../assets/images/user-icon.png"
 
 
 
@@ -21,11 +20,11 @@ export default function Users() {
     <section>
         <Container>
             <Row>
-                <Col lg='12'>
+                <Col lg="12">
                     <h4 className="fw-bold">Users</h4>
                 </Col>
-                <Col  className='lg-12 pt-5 '>
-                    <tabel className="table">
+                <Col lg = "12"  className='pt-5'>
+                    <table className='table'>
                         <thead>
                             <tr>
                                 <th>Image</th>
@@ -49,14 +48,12 @@ export default function Users() {
                                         <button className='btn btn-danger' onClick={()=> deleteUser(user.uid)} >Delete</button>
                                     </td>
                                 </tr>
-                            ))
-                          )
+                            )))
                         }  
                         </tbody>
-                    </tabel>
+                    </table>
                 </Col>
             </Row>
-
         </Container>
     </section>
   )

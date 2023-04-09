@@ -2,7 +2,6 @@ import React from 'react';
 import { Container,Row } from 'reactstrap';
 import UserAuth from '../custom-hooks/userAuth';
 import "../styles/admin-nav.css"
-import userrIcon from "../assets/images/user-icon.png"
 import { NavLink } from 'react-router-dom';
 const admin__nav = [
   {
@@ -18,7 +17,7 @@ const admin__nav = [
     path:"/dashboard/all-products"
   },
   {
-    display:"Orders",
+    display:"Order",
     path:"/dashboard/orders"
   },
   {
