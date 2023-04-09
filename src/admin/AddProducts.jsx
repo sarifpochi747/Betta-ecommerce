@@ -31,32 +31,18 @@ export default function AddProducts() {
       
       const docRef = await collection(db,"product");
       //store image
-      const storageRef = ref(storage,`ProductImage/${Date.now() + enterId}`);
+      const docAdd = await addDoc(docRef,{
+          id:enterId,
+          productName:enterName,
+          gender:enterGender,
+          size:enterSize,
+          category:enterCategory,
+          imgUrl:enterImage,
+          colour:enterColour,
+          date:enterDate,
+          price:enterPrice,
+      })
 
-      const uploadTask = uploadBytesResumable(storageRef,enterImage);
-      uploadTask.on(()=> {
-          toast.error("images not uploaded!")
-      },
-      ()=>{
-          getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL)=>{
-
-              //update user profile
-              await addDoc(docRef,{
-                id:enterId,
-                productName:enterName,
-                gender:enterGender,
-                size:enterSize,
-                category:enterCategory,
-                imgUrl:downloadURL,
-                colour:enterColour,
-                date:enterDate,
-                price:enterPrice,
-              });
-            
-          });
-          
-        });
-        
         setLoading(false);
         toast.success("product successfully added");
         navigate("/dashboard/all-products");
@@ -107,7 +93,7 @@ export default function AddProducts() {
                       </FormGroup>
                       <FormGroup className='form__group'>
                           <span>Date</span>
-                          <input type="text " placeholder='01/02/65' value={enterDate} onChange={e => setEnterDate(e.target.value)} required/>
+                          <input type="text " placeholder='2 month' value={enterDate} onChange={e => setEnterDate(e.target.value)} required/>
                       </FormGroup>
       
                       <div className="d-flex align-items-center justify-content-between gap-5">
@@ -127,7 +113,7 @@ export default function AddProducts() {
                       </div>
                       <FormGroup className='form__group'>
                         <span>Product Image</span>
-                        <input type="file" onChange={e => setEnterImage(e.target.files[0])} required />
+                        <input type="text" placeholder='URL' value={enterImage} onChange={e => setEnterImage(e.target.value)} required/>
                       </FormGroup>
       
       

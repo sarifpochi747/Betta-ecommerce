@@ -1,13 +1,22 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import { Container,Row,Col } from 'reactstrap';
 import useGetData from '../custom-hooks/useGetData';
-import { db } from '../firebase.config';
-import { doc,deleteDoc } from 'firebase/firestore';
-import { toast } from 'react-toastify';
+import Overlay from "react-overlay-component";
+
 export default function Order() {
 
     const {data:orderData,loading} =  useGetData("order");
-    
+    const [isOpen, setOverlay] = useState(false);
+
+    const closeOverlay = () => setOverlay(false);
+
+
+
+    const configs = {
+      animate: true,
+      showCloseIcon: false,
+      focusOutline: true,
+    }
 
 
     return (
@@ -42,12 +51,19 @@ export default function Order() {
                               <td>{item.numberPhone}</td>
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
-                              <td><button className='btn btn-info bg-info' >show</button></td>
+                              <td><button className='btn btn-info bg-info' onClick={()=>{setOverlay(true)}} >show</button></td>
                             </tr>
                         )))
                       }
                     </tbody>
                   </table>
+            </Col>
+            <Col>
+              <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>
+                  <h2>Sample header</h2>
+                  <p>text content</p>
+                      close modal
+              </Overlay>
             </Col>
           </Row>
         </Container>

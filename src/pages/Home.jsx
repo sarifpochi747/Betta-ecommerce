@@ -11,11 +11,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {  collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase.config";
+import UserAuth from "../custom-hooks/userAuth";
 
 const Home =()=>{
     
     const [data,setData] = useState([]);
-
+    const {currentUser} = UserAuth();
+    console.log(currentUser)
     const fectData = async ()=>{
         await getDocs (collection(db,"product"))
         .then((querySnapshot)=>
@@ -23,10 +25,9 @@ const Home =()=>{
             const data1  = querySnapshot.docs.map((doc) =>({...doc.data(),id:doc.id}))
             setData(data1)
             console.log(data,data1);
+            setData(data1.filter(item =>item.category === "Betta splendens"))
         })
         
-        const filterProducts = data.filter(item =>item.category === "Betta splendens")
-        setData(filterProducts)
     }
     useEffect(()=>{
         fectData();

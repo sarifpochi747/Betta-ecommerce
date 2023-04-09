@@ -4,21 +4,21 @@ import { getAuth } from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyDPsn8vRFg_ADqhslagE90fX0QQhN6AhzQ",
-  authDomain: "se-project-23a18.firebaseapp.com",
-  projectId: "se-project-23a18",
-  storageBucket: "se-project-23a18.appspot.com",
-  messagingSenderId: "1058204060115",
-  appId: "1:1058204060115:web:bf8758a3050d37648e8726"
+  apiKey: "AIzaSyBumsnXkPmLi-KzUPTINqWMwcMWMLgd3AQ",
+  authDomain: "seproject-21184.firebaseapp.com",
+  projectId: "seproject-21184",
+  storageBucket: "seproject-21184.appspot.com",
+  messagingSenderId: "45354095152",
+  appId: "1:45354095152:web:177b17a3627626e4c013f5"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);;
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app); 
 
 
 export default app;
+

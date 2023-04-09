@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 export default function AllProducts() {
 
   const {data:productsData,loading} = useGetData("product");
-  console.log(productsData);
   const deleteProduct = async(id)=>{
     await deleteDoc(doc(db,"product",id));
     toast.success("Deleded!")
