@@ -26,11 +26,20 @@ const Login =()=>{
             const userCreadentail = await signInWithEmailAndPassword(auth, email, password);
             const user = userCreadentail.user;
 
-            console.log(user)
+            console.log(user.uid)
 
             setLoading(false);
             toast.success("Successfully logged in");
-            navigate("/shop");
+            if(user.uid === "cW8ZNJai2nWJMW7Wgs9ccXrbBfp2")
+            {
+
+                navigate("/dashboard");
+            }
+            else
+            {
+
+                navigate("/shop");
+            }
 
         } catch (error) {
             setLoading(false);

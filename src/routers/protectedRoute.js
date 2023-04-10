@@ -12,4 +12,3 @@ function ProtectedRoute() {
 
 export default ProtectedRoute
 
-/* Ri12xTEFIHesjEwp4DvK2NLuqel1 */
