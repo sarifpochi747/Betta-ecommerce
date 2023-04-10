@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import {db,storage} from "../firebase.config";
 import {collection,addDoc} from "firebase/firestore"
 import { toast } from 'react-toastify'
+import UserAuth from "../custom-hooks/userAuth";
 
 
 
@@ -22,8 +23,8 @@ const Checkout =()=>{
     const [postalcode,setPostalCode] = useState();
     const [country,setCountry] = useState();
     const [loading,setLoading] = useState(false);
-
-
+    const {currentUser} = UserAuth();
+    const [statusbtn,setStatusBtn] = useState(true)
     
     const placeOrder =  async (e)=>{
         e.preventDefault();
@@ -32,6 +33,7 @@ const Checkout =()=>{
         try {
             const docRef = await collection(db,"order");
             const docAdd = await addDoc(docRef,{
+                userid:currentUser.uid,
                 fullname:fullname,
                 email:email,
                 numberPhone:numberPhone,
@@ -41,6 +43,7 @@ const Checkout =()=>{
                 country:country,
                 price:totalAmout,
                 quality:totalQuantity,
+                status:"no-paid",
                 cartItems
             })
             toast.success("product successfully order added");
@@ -61,8 +64,12 @@ const Checkout =()=>{
     }
 
 
-
-
+    useEffect(()=>{
+        if(totalAmout> 0)
+        {
+            setStatusBtn(false)
+        }
+    },[totalAmout])
     
     return(
         <Helmet title={"CheckOut"}>
@@ -131,7 +138,7 @@ const Checkout =()=>{
                                                 required
                                                 />
                                             </FormGroup>
-                                            <button className="buy_btn auth__btn btn btn-info bg-info" >Place an order</button>
+                                            <button className="buy_btn auth__btn btn btn-info bg-info" disabled={statusbtn}>Place an order</button>
                                         </Form>
                                         </Col>
                                         <Col lg='4' className="checkout__cart_col">

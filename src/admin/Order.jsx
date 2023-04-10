@@ -2,6 +2,7 @@ import React ,{useState}from 'react';
 import { Container,Row,Col } from 'reactstrap';
 import useGetData from '../custom-hooks/useGetData';
 import Overlay from "react-overlay-component";
+
 export default function Order() {
 
     const {data:orderData,loading} =  useGetData("order");
@@ -58,8 +59,8 @@ export default function Order() {
                               <td>{item.numberPhone}</td>
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
+                              <td>{item.status}</td>
                               <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >show</button></td>
-                              <td>paid</td>
                             </tr>
                         )))
                       }

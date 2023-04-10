@@ -75,6 +75,9 @@ const  Header=()=>{
                                 <li className="nav__item" >
                                     <NavLink to={"cart"} >Cart</NavLink>
                                 </li>
+                                <li className="nav__item" >
+                                    <NavLink to={"payment"} >Payment</NavLink>
+                                </li>
                             </ul>
                         </div>
                         <div className="nav__icons">

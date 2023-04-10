@@ -49,7 +49,7 @@ const Cart =()=>{
                                 <button className="buy_btn w-100 mt-3">
                                     <Link to= '/shop' >Continue Shop</Link>
                                 </button>
-                                <button className="buy_btn w-100 mt-3">
+                                <button type="button" className="buy_btn w-100 mt-3"  >
                                     <Link to= '/checkout' >Check Out</Link>
                                 </button>
                             </div>
