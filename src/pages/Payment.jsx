@@ -18,7 +18,7 @@ export default function Payment() {
   const closeOverlay = () => setOverlay(false);
   const [url, setUrl] = useState('https://www.google.co.th/')
   const [qr, setQr] = useState('')
-
+  const [totalPrice,setTotalPrice]= useState();
   const configs = {
     animate: true,
     showCloseIcon: false,
@@ -26,7 +26,8 @@ export default function Payment() {
     escapeDismiss: false,
     focusOutline: true,
   }
-  const GenerateQRCode = () => {
+  const GenerateQRCode = (totalPrice) => {
+    setTotalPrice(totalPrice)
     QRCode.toDataURL(url, {
       width: 400,
       margin: 2,
@@ -76,7 +77,7 @@ export default function Payment() {
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
                               <td>{item.status}</td>
-                              <td><button className='paynow btn btn-info bg-info ' onClick={GenerateQRCode} >Pay Now</button></td>
+                              <td><button className='paynow btn btn-info bg-info ' onClick={()=>GenerateQRCode(item.price)} >Pay Now</button></td>
                               <td><input type='file'/>payment receipt</td>
                             </tr>
                         )))
@@ -89,7 +90,7 @@ export default function Payment() {
                   <img src={"https://www.ppro.com/wp-content/uploads/2021/06/PromptPay-logo.png"} className='logo-promtpay'/>
                   <img src={qr} className='qr-code'/>
                   <div className="checkout__cart mt-2">
-                      <h4>Total Cost: <span>${totalAmout}</span></h4>
+                  <h4>Total Cost: <span>${totalPrice}</span></h4>
                   </div>
                       <button
                         className="btn btn-danger mt-4 "
