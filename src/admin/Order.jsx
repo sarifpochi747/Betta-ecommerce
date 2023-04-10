@@ -41,6 +41,7 @@ export default function Order() {
                         <th>Total Price</th>
                         <th>Total Quality</th>
                         <th>Products Details</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@ export default function Order() {
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
                               <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >show</button></td>
+                              <td>paid</td>
                             </tr>
                         )))
                       }
