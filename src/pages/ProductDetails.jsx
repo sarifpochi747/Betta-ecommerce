@@ -17,7 +17,6 @@ const ProductDetails =()=>{
     const {id} = useParams()
     const fectData = productsData.filter(item=> item.id == id)
     //const {imgUrl, productName,price ,colour,date,size,gender,category} = fectData[0];
-    //const relatedPcoroducts = fectData.filter(item=> item.category === category)
     const addTocart = ()=>{
         dispatch(cartAction.addItem({
             id:fectData[0].id,
@@ -39,7 +38,7 @@ const ProductDetails =()=>{
             <section  className="pt-0">
                 <Container>
                     <Row>
-                        <Col lg='6' >
+                        <Col lg='6' className="product_img1">
                             <div className="product_img">
                                {
                                 fectData.map((item)=>(

@@ -1,8 +1,8 @@
 
-.product_img{
-
-    margin: 10px;
+.product_img img{
+    margin-top: 90px;
 }
+
 .product__details{
     margin-top: 140px;
 }

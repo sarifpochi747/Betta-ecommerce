@@ -5,6 +5,7 @@ import useGetData from '../custom-hooks/useGetData';
 export default function Dashboard() {
     const {data:users} = useGetData("users")
     const {data:product} = useGetData("product")
+    const {data:order} = useGetData("order")
     return(
       <>
         <section>
@@ -19,7 +20,7 @@ export default function Dashboard() {
                   <Col className="lg-3">
                     <div className="order__box">
                       <h5>Orders</h5>
-                      <span>$7777</span>
+                      <span>{order.length}</span>
                     </div>
                   </Col>
                   <Col className="lg-3">

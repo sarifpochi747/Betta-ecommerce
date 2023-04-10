@@ -40,7 +40,7 @@ export default function Order() {
                         <th>Phone</th>
                         <th>Total Price</th>
                         <th>Total Quality</th>
-                        <th>Order Details</th>
+                        <th>Products Details</th>
                       </tr>
                     </thead>
                     <tbody>
