@@ -1,5 +1,5 @@
 import { Navigate} from "react-router-dom";
-import React from 'react'
+import React, { useEffect } from 'react'
 import UserAuth from "../custom-hooks/userAuth";
 import { Outlet } from "react-router-dom";
 
@@ -7,8 +7,9 @@ import { Outlet } from "react-router-dom";
 
 function ProtectedRoute() {
     const {currentUser} = UserAuth();
-
     return currentUser ? <Outlet/> : <Navigate to="/login" />
 }
 
 export default ProtectedRoute
+
+/* Ri12xTEFIHesjEwp4DvK2NLuqel1 */
