@@ -41,8 +41,8 @@ export default function Order() {
                         <th>Phone</th>
                         <th>Total Price</th>
                         <th>Total Quality</th>
-                        <th>Products Details</th>
                         <th>Status</th>
+                        <th>Products Details</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -16,7 +16,7 @@ const ProductDetails =()=>{
     const dispatch = useDispatch();
     const {id} = useParams()
     const fectData = productsData.filter(item=> item.id == id)
-    const dataCa = fectData[0].category
+    const dataCa = fectData.category
     const relatedProducts = productsData.filter(item=> item.category === dataCa)
 
     //const {imgUrl, productName,price ,colour,date,size,gender,category} = fectData[0];
