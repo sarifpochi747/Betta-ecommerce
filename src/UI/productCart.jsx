@@ -40,9 +40,9 @@ export default function ProductCart({item}) {
               <div className='p-2 product_info'>
                 <h3 className="product_name>"><Link to={`/shop/${item.id}`}>{item.productName}</Link></h3>
                 <span >Species : {item.category}</span>
-                <span >Gender : Male</span>
-                <span >Size: 1.4 cm</span>
-                <span >colour : red</span>
+                <span >Gender : {item.gender}</span>
+                <span >Size: {item.size} cm</span>
+                <span >colour : {item.colour }</span>
               </div>
               <div className="product_card-bottom d-flex align-items-center justify-content-between p-2">
                   <span className="price">${item.price}</span>

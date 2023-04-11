@@ -16,6 +16,9 @@ const ProductDetails =()=>{
     const dispatch = useDispatch();
     const {id} = useParams()
     const fectData = productsData.filter(item=> item.id == id)
+    const dataCa = fectData[0].category
+    const relatedProducts = productsData.filter(item=> item.category === dataCa)
+
     //const {imgUrl, productName,price ,colour,date,size,gender,category} = fectData[0];
     const addTocart = ()=>{
         dispatch(cartAction.addItem({
@@ -70,6 +73,7 @@ const ProductDetails =()=>{
                         <Col lg='12' className="mt-5">
                             <h2 className="related__title">You might also like</h2>
                         </Col>
+                        <ProductList data = {relatedProducts}/>
                     </Row>
                 </Container>
             </section>
