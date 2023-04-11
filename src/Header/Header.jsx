@@ -76,7 +76,7 @@ const  Header=()=>{
                                     <NavLink to={"cart"} >Cart</NavLink>
                                 </li>
                                 <li className="nav__item" >
-                                    <NavLink to={"payment"} >Payment</NavLink>
+                                    <NavLink to={"/payment"} >Payment</NavLink>
                                 </li>
                             </ul>
                         </div>

@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 
 export default function Payment() {
-  const totalAmout = useSelector((state) => state.cart.totalAmount);
 
   const {data:orderData,loading} =  useGetData("order");
   const {currentUser} = UserAuth();
@@ -65,8 +64,8 @@ export default function Payment() {
                     </thead>
                     <tbody>
                       {
-                         loading ? 
-                          (<h1 className="py-5 text-center fw-bold">Loading....</h1>)
+                         orderData === 0  ? 
+                          (<h1 className="py-5 text-center fw-bold">Please create your order</h1>)
                           :
                           (orderUser.map((item) => (
                             <tr key={item.id} >
