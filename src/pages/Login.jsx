@@ -30,7 +30,7 @@ const Login =()=>{
 
             setLoading(false);
             toast.success("Successfully logged in");
-            if(user.uid === "cW8ZNJai2nWJMW7Wgs9ccXrbBfp2")
+            if(user.uid === "Ri12xTEFIHesjEwp4DvK2NLuqel1")
             {
 
                 navigate("/dashboard");
