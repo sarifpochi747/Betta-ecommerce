@@ -12,6 +12,8 @@ import UserAuth from "../custom-hooks/userAuth";
 
 
 const Checkout =()=>{
+
+    const {currentUser} = UserAuth();
     const totalQuantity= useSelector((state) => state.cart.totalQuantity);
     const totalAmout = useSelector((state) => state.cart.totalAmount);
     const cartItems = useSelector((state) => state.cart.cartItems);
@@ -23,9 +25,8 @@ const Checkout =()=>{
     const [postalcode,setPostalCode] = useState();
     const [country,setCountry] = useState();
     const [loading,setLoading] = useState(false);
-    const {currentUser} = UserAuth();
     const [statusbtn,setStatusBtn] = useState(true)
-    
+
     const placeOrder =  async (e)=>{
         e.preventDefault();
         setLoading(true)
@@ -65,6 +66,8 @@ const Checkout =()=>{
 
 
     useEffect(()=>{
+
+        setEmail(currentUser.email)
         if(totalAmout> 0)
         {
             setStatusBtn(false)

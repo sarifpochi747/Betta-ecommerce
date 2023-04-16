@@ -6,6 +6,10 @@ import Overlay from "react-overlay-component";
 import QRCode from 'qrcode'
 import "../styles/payment.css"
 import { useSelector } from "react-redux";
+import { doc,deleteDoc } from 'firebase/firestore';
+import { db } from '../firebase.config';
+import { toast } from 'react-toastify';
+import Helmet from "../Helmet/helmet";
 
 
 export default function Payment() {
@@ -25,6 +29,12 @@ export default function Payment() {
     escapeDismiss: false,
     focusOutline: true,
   }
+
+  const deleteOrder= async(id)=>{
+    await deleteDoc(doc(db,"order",id));
+    toast.success("Deleded!")
+  }
+
   const GenerateQRCode = (totalPrice) => {
     setTotalPrice(totalPrice)
     QRCode.toDataURL(url, {
@@ -44,6 +54,7 @@ export default function Payment() {
     }
 
   return (
+    <Helmet title = {"Payment"}>
     <section>
       <Container>
         <Row>
@@ -59,13 +70,21 @@ export default function Payment() {
                         <th>Total Quality</th>
                         <th>Status</th>
                         <th>Action</th>
+                        <th>Pay</th>
                         <th>Bill</th>
                       </tr>
                     </thead>
                     <tbody>
                       {
-                         orderData === 0  ? 
-                          (<h1 className="py-5 text-center fw-bold">Please create your order</h1>)
+                         loading  ? 
+                          (<h1 className="py-5 text-center fw-bold">Loading...</h1>)
+                          :
+                          (orderUser.length === 0 ? (
+                            <div className='text-create'>
+                              
+                              <h1 className="py-5 text-center fw-bold ">Please create your order</h1>
+                              </div>
+                          )
                           :
                           (orderUser.map((item) => (
                             <tr key={item.id} >
@@ -76,10 +95,11 @@ export default function Payment() {
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
                               <td>{item.status}</td>
+                              <td><button className='paynow btn btn-danger bg-danger ' onClick={()=>deleteOrder(item.id)} >Delete</button></td>
                               <td><button className='paynow btn btn-info bg-info ' onClick={()=>GenerateQRCode(item.price)} >Pay Now</button></td>
                               <td><input type='file'/>payment receipt</td>
                             </tr>
-                        )))
+                        ))))
                       }
                     </tbody>
                   </table>
@@ -104,5 +124,6 @@ export default function Payment() {
         </Row>
       </Container>
     </section>
+    </Helmet>
   )
 }

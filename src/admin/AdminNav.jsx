@@ -2,7 +2,13 @@ import React from 'react';
 import { Container,Row } from 'reactstrap';
 import UserAuth from '../custom-hooks/userAuth';
 import "../styles/admin-nav.css"
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
+import { auth } from "../firebase.config";
+import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
+import userrIcon from "../assets/images/user-icon.png"
+
+
 const admin__nav = [
   {
     display:"Dashboard",
@@ -31,9 +37,17 @@ const admin__nav = [
 
 
 export default function AdminNav() {
-
+  const navigate = useNavigate();
   const {currentUser} = UserAuth()
-  
+
+  const logout = ()=>{
+    signOut(auth).then(()=>{
+        toast.success("Logged out")
+        navigate("/login");
+    }).catch(err=>{
+        toast.error(err.message)
+    })
+  }
 
 
 
@@ -56,7 +70,10 @@ export default function AdminNav() {
               <div className="admin__nav-top-right">
                 <span><i className="ri-notification-3-line"></i></span>
                 <span><i className="ri-settings-2-line"></i></span>
-                <img src={currentUser &&currentUser.photoURL}/>
+                <img src={userrIcon}/>
+                <div className="logout">
+                  <span    onClick={logout}>Logout</span>                                          
+                </div>
               </div>
 
               
@@ -81,6 +98,7 @@ export default function AdminNav() {
                   ))
                 }
               </ul>
+
             </div>
           </Row>
         </Container>

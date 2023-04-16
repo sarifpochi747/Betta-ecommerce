@@ -17,7 +17,7 @@ const Cart =()=>{
                     <Row>
                         <Col lg='9'>
                             {
-                                cartItems.lenght === 0?
+                                cartItems.lenght == 0?
                                     (
                                         <h2 className='fs-4 text-center'>No item added to cart</h2>
                                     ):( 

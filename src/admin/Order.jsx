@@ -2,6 +2,11 @@ import React ,{useState}from 'react';
 import { Container,Row,Col } from 'reactstrap';
 import useGetData from '../custom-hooks/useGetData';
 import Overlay from "react-overlay-component";
+import { doc,deleteDoc } from 'firebase/firestore';
+import { db } from '../firebase.config';
+import { toast } from 'react-toastify';
+
+
 
 export default function Order() {
 
@@ -10,6 +15,10 @@ export default function Order() {
     const [dataDetail,setDataDetail] = useState([])
     const closeOverlay = () => setOverlay(false);
 
+    const deleteOrder= async(id)=>{
+      await deleteDoc(doc(db,"order",id));
+      toast.success("Deleded!")
+    }
 
     const configs = {
       animate: true,
@@ -43,6 +52,7 @@ export default function Order() {
                         <th>Total Quality</th>
                         <th>Status</th>
                         <th>Products Details</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -60,7 +70,8 @@ export default function Order() {
                               <td>${item.price}</td>
                               <td>{item.quality}</td>
                               <td>{item.status}</td>
-                              <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >show</button></td>
+                              <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >SHOW</button></td>
+                              <td><button className='btn btn-danger bg-danger' onClick={()=>deleteOrder(item.id)} >DELETE</button></td>
                             </tr>
                         )))
                       }
