@@ -1,7 +1,8 @@
 .header{
     width: 100%;
-    height: 70px;
-    line-height: 70px;
+    height: auto;
+    background: var(--primary-color);
+    padding: 20px 0px;
 }
 
 .nav__wrapper{
@@ -27,17 +28,19 @@
 .logo h1{
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: white;
 }
+
 
 .menu{
     display: flex;
     align-items: center;
     column-gap: 2.7rem;
+    margin: 0px;
 }
 
-.nav__item a{
-    color: var(--primary-color);
+.nav__item a {
+    color: white;
     font-weight: 500;
     cursor: pointer;
 }
@@ -48,62 +51,11 @@
     column-gap: 1.3rem;
 }
 
-.nav__icons span{
+.nav__icons span {
     font-size: 1.3rem;
-    color: var(--primary-color);
+    color: white;
     cursor: pointer;
 }
-
-.nav__icons .profile img{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.nav__icons .profile{
-    position: relative;
-    z-index: 9;
-}
-.nav__icons .profile .profile__actions{
-    position: absolute;
-    top: 98%;
-    left: 0;
-    width: 150px;
-    z-index: 10;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: var(--card-bg-01);
-    line-height: 30px;
-    
-    cursor: pointer;
-}
-
-
-.show__profileActions{
-    display: block;
-}
-
-.nav__active
-{
-    font-weight: 600;
-}
-
-
-.sticky__header{
-    width: 100%;
-    height: 70px;
-    line-height: 70px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    box-shadow: 3px 3px 8px -3px #ddd;
-    background: white;
-}
-
 
 .fav__icon,.cart__icon
 {
@@ -124,6 +76,74 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    color: #ddd;
+    background: var(--primary-color);
     
 }
+
+
+
+
+.nav__icons .profile img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.nav__icons .profile{
+    position: relative;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+}
+
+.profile__actions .logout{
+    cursor: pointer;
+    background: #ffffff;
+    height: 50px;
+    width: 100%;
+    border-radius: 30px;
+    text-align: center;
+    margin-left:  20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.profile__actions .logout span{
+    color: black;
+}
+
+.logon-logout{
+    display: flex;
+    background:white ;
+    border-radius: 30px;
+    margin-left:  20px;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.logon-logout a{
+    margin: 0px 3px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+.sticky__header{
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 3px 3px 8px -3px #ddd;
+    background: white;
+}
+
+
+
+

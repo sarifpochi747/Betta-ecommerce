@@ -11,7 +11,6 @@ export default function AddProducts() {
 
   const navigate = useNavigate();
 
-  const [enterId,setEnterId] = useState('')
   const [enterName,setEnterName] = useState('')
   const [enterGender,setEnterGender] = useState('')
   const [enterSize,setEnterSize] = useState('')
@@ -32,7 +31,6 @@ export default function AddProducts() {
       const docRef = await collection(db,"product");
       //store image
       const docAdd = await addDoc(docRef,{
-          id:enterId,
           productName:enterName,
           gender:enterGender,
           size:enterSize,
@@ -71,10 +69,6 @@ export default function AddProducts() {
                   <Col lg='12' >
                     <h4 className='mb-5'>Add Product</h4>
                     <Form onSubmit={addProduct}>
-                      <FormGroup className='form__group' >
-                          <span>ID Product</span>
-                          <input type="text " placeholder='01' value={enterId} onChange={e => setEnterId(e.target.value)} required/>
-                      </FormGroup>
                       <FormGroup className='form__group'>
                           <span>Name Product</span>
                           <input type="text " placeholder='Name.....' value={enterName} onChange={e => setEnterName(e.target.value)} required/>

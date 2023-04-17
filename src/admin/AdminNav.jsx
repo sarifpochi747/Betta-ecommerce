@@ -38,7 +38,6 @@ const admin__nav = [
 
 export default function AdminNav() {
   const navigate = useNavigate();
-  const {currentUser} = UserAuth()
 
   const logout = ()=>{
     signOut(auth).then(()=>{

@@ -2,7 +2,7 @@ import React ,{useState}from 'react';
 import { Container,Row,Col } from 'reactstrap';
 import useGetData from '../custom-hooks/useGetData';
 import Overlay from "react-overlay-component";
-import { doc,deleteDoc } from 'firebase/firestore';
+import { doc,deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 
@@ -18,6 +18,19 @@ export default function Order() {
     const deleteOrder= async(id)=>{
       await deleteDoc(doc(db,"order",id));
       toast.success("Deleded!")
+    }
+
+    const paidOrder = async (id)=>{
+      await updateDoc(doc(db,"order",id),{
+        status:"paid"
+      });
+      toast.success("status change")
+    }
+    const noPaidOrder = async (id)=>{
+      await updateDoc(doc(db,"order",id),{
+        status:"no-paid"
+      });
+      toast.success("status change")
     }
 
     const configs = {
@@ -53,6 +66,7 @@ export default function Order() {
                         <th>Status</th>
                         <th>Products Details</th>
                         <th>Action</th>
+                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,6 +85,11 @@ export default function Order() {
                               <td>{item.quality}</td>
                               <td>{item.status}</td>
                               <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >SHOW</button></td>
+                              <td>
+                                <button className='btn btn-success bg-success' onClick={()=>paidOrder(item.id)} disabled={item.status == "no-paid" ?false:true} >PAID</button>
+                                <button className='btn btn-success bg-success mt-3' onClick={()=>noPaidOrder(item.id)} disabled={item.status == "paid" ?false:true} >NO-PAID</button>
+                              
+                              </td>
                               <td><button className='btn btn-danger bg-danger' onClick={()=>deleteOrder(item.id)} >DELETE</button></td>
                             </tr>
                         )))

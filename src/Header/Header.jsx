@@ -16,24 +16,13 @@ import { auth } from "../firebase.config";
 
 const  Header=()=>{
     
-    const headerRef = useRef(null)
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
     const navigate = useNavigate();
     const navigateToCart = ()=>{navigate("/cart")}
     const {currentUser} = UserAuth();
     const profileActionsRef = useRef(null);
     
-    const stickyHeaderFunc = ()=>{
-        window.addEventListener("scroll",()=>{
-            if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
-            {
-                headerRef.current.classList.add("sticky__header");
-            }
-            else{
-                headerRef.current.classList.remove("sticky__header");
-            }
-        });
-    };
+
 
     const logout = ()=>{
         signOut(auth).then(()=>{
@@ -43,17 +32,13 @@ const  Header=()=>{
             toast.error(err.message)
         })
     }
-    useEffect(()=>{
-        stickyHeaderFunc();
-        return()=> window.removeEventListener("scroll",stickyHeaderFunc);
-    });
 
-    const toggleProfileActions = ()=> profileActionsRef.current.classList.toggle("show__profileActios");
+
 
 
     return(
         
-        <header className="header" ref={headerRef}>
+        <header className="header" >
             <Container>
                 <Row>
                     <div className="nav__wrapper">
@@ -86,18 +71,20 @@ const  Header=()=>{
                                 <div className="badge"><span >3</span></div>
                             </span>
                             <span className="cart__icon" onClick={navigateToCart}>
-                                <i className="ri-shopping-bag-line" ></i>
+                                <i class="ri-shopping-cart-line"></i>
                                 <div className="badge"><span >{totalQuantity}</span></div>
                             </span>
 
                             <div className="profile" >
-                                <motion.img ref={profileActionsRef} whileTap={{scale:1.2}} src={userrIcon} alt="" onClick = {toggleProfileActions}/>
-                                <div className="profile__actions"  onClick = {toggleProfileActions}>
+                                <motion.img ref={profileActionsRef} whileTap={{scale:1.2}} src={userrIcon} alt=""/>
+                                <div className="profile__actions" >
                                     {
                                         currentUser? (
-                                            <span onClick={logout}>Logout</span>
+                                            <div className="logout">
+                                                <span    onClick={logout}>Logout</span>                                          
+                                            </div>
                                         ):(
-                                            <div className="d-flex align-items-center justify-content-center flex-column">
+                                            <div className="logon-logout">
                                                 <NavLink to={"/dashboard"} >Dashboard</NavLink>                                            
                                                 <NavLink to={"/signup"} >Signup </NavLink>                                            
                                                 <NavLink to={"/login"} >Login</NavLink>                                            
