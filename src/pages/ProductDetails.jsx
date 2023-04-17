@@ -59,9 +59,9 @@ const ProductDetails =()=>{
                                             <h2>{item.productName}</h2>
                                             <span >Species : {item.category}</span>
                                             <span >Gender : {item.gender}</span>
-                                            <span >Size:{item.size} cm</span>
-                                            <span >colour : {item.colour}</span>
-                                            <span className="product__price mt-3">${item.price}</span>
+                                            <span >Size: {item.size} cm</span>
+                                            <span >Colour : {item.colour}</span>
+                                            <span className="product__price mt-3">Price :${item.price}</span>
                                         </>
 
                                     ))
@@ -70,10 +70,6 @@ const ProductDetails =()=>{
                                 <motion.button    whileHover={{scale: 1.2}} className="buy_btn"  onClick={addTocart}>Add to Cart</motion.button>
                             </div>
                         </Col>
-                        <Col lg='12' className="mt-5">
-                            <h2 className="related__title">You might also like</h2>
-                        </Col>
-                        <ProductList data = {relatedProducts}/>
                     </Row>
                 </Container>
             </section>

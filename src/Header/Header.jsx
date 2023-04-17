@@ -68,7 +68,7 @@ const  Header=()=>{
                         <div className="nav__icons">
                             <span className="fav__icon">
                                 <i className="ri-heart-line"></i>
-                                <div className="badge"><span >3</span></div>
+                                <div className="badge"><span >{totalQuantity}</span></div>
                             </span>
                             <span className="cart__icon" onClick={navigateToCart}>
                                 <i class="ri-shopping-cart-line"></i>
