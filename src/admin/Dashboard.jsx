@@ -6,6 +6,13 @@ export default function Dashboard() {
     const {data:users} = useGetData("users")
     const {data:product} = useGetData("product")
     const {data:order} = useGetData("order")
+
+    const orderPaid = order.filter(item=> item.status == 'paid')
+    const totalSales = orderPaid.reduce((sum,item) => {
+        return sum + item.price
+    },0)
+
+
     return(
       <>
         <section>
@@ -14,7 +21,7 @@ export default function Dashboard() {
                 <Col className="lg-3">
                   <div className='revenue__box'>
                     <h5>Total Sales</h5>
-                    <span>$1111</span>
+                    <span>${totalSales}</span>
                   </div>
                 </Col>
                   <Col className="lg-3">

@@ -20,17 +20,10 @@ export default function Order() {
       toast.success("Deleded!")
     }
 
-    const paidOrder = async (id)=>{
+    const paidOrder = async (id,s)=>{
       await updateDoc(doc(db,"order",id),{
-        status:"paid"
+        status:s 
       });
-      toast.success("status change")
-    }
-    const noPaidOrder = async (id)=>{
-      await updateDoc(doc(db,"order",id),{
-        status:"no-paid"
-      });
-      toast.success("status change")
     }
 
     const configs = {
@@ -86,8 +79,8 @@ export default function Order() {
                               <td>{item.status}</td>
                               <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >SHOW</button></td>
                               <td>
-                                <button className='btn btn-success bg-success' onClick={()=>paidOrder(item.id)} disabled={item.status == "no-paid" ?false:true} >PAID</button>
-                                <button className='btn btn-success bg-success mt-3' onClick={()=>noPaidOrder(item.id)} disabled={item.status == "paid" ?false:true} >NO-PAID</button>
+                                <button className='btn btn-success bg-success' onClick={()=>paidOrder(item.id,"paid")} disabled={item.status == "no-paid" ?false:true} >PAID</button>
+                                <button className='btn btn-success bg-success mt-3' onClick={()=>paidOrder(item.id,"no-paid")} disabled={item.status == "paid" ?false:true} >NO-PAID</button>
                               
                               </td>
                               <td><button className='btn btn-danger bg-danger' onClick={()=>deleteOrder(item.id)} >DELETE</button></td>

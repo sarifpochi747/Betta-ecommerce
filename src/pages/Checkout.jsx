@@ -28,7 +28,7 @@ const Checkout =()=>{
     const [statusbtn,setStatusBtn] = useState(true)
     const placeOrder =  async (e)=>{
         e.preventDefault();
-        setEmail(currentUser.email)
+        
         setLoading(true)
         // ========= add order to the firebase database=================
         try {
@@ -100,9 +100,10 @@ const Checkout =()=>{
                                             </FormGroup>
                                             <FormGroup className="form__group">
                                                 <input type="email"  
-                                                value={currentUser.email} 
+                                                value={email} 
+                                                placeholder="Enter your email" 
+                                                onChange={e=>setEmail(e.target.value)} 
                                                 required
-                                                disabled
                                                 />
                                             </FormGroup>
                                             <FormGroup className="form__group">
