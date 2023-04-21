@@ -5,7 +5,7 @@ import Overlay from "react-overlay-component";
 import { doc,deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
-
+import "../styles/order.css"
 
 
 export default function Order() {
@@ -59,7 +59,6 @@ export default function Order() {
                         <th>Status</th>
                         <th>Products Details</th>
                         <th>Action</th>
-                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,12 +77,11 @@ export default function Order() {
                               <td>{item.quality}</td>
                               <td>{item.status}</td>
                               <td><button className='btn btn-info bg-info' onClick={()=>showdetails(item.cartItems)} >SHOW</button></td>
-                              <td>
-                                <button className='btn btn-success bg-success' onClick={()=>paidOrder(item.id,"paid")} disabled={item.status == "no-paid" ?false:true} >PAID</button>
-                                <button className='btn btn-success bg-success mt-3' onClick={()=>paidOrder(item.id,"no-paid")} disabled={item.status == "paid" ?false:true} >NO-PAID</button>
-                              
+                              <td className='td_action '>
+                                <button className='btn_paid btn btn-success bg-success' onClick={()=>paidOrder(item.id,"paid")} disabled={item.status == "no-paid" ?false:true} >PAID</button>
+                                <button className='btn_nopaid btn btn-success bg-success mt-3' onClick={()=>paidOrder(item.id,"no-paid")} disabled={item.status == "paid" ?false:true} >NO-PAID</button>
+                                <button className='btn_delete btn btn-danger bg-danger' onClick={()=>deleteOrder(item.id)} >DELETE</button>
                               </td>
-                              <td><button className='btn btn-danger bg-danger' onClick={()=>deleteOrder(item.id)} >DELETE</button></td>
                             </tr>
                         )))
                       }
